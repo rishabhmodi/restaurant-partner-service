@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "files": ["./node_modules/@types/express/index.d.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["typings/*", "node_modules"]
+}
