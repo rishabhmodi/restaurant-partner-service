@@ -1,18 +1,22 @@
 import { Dialect, Sequelize } from "sequelize";
 import RestaurantModel from "../apis/restaurant/RestaurantModel";
 import MenuItemModel from "../apis/menu-items/MenuItemModel";
+import RatingsModel from "../apis/ratings/RatingsModel";
+import Locals from "../providers/Locals";
+
+const config = Locals.config();
 
 const dbConnection = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "password",
-  DB: "restaurant_partner",
-  dialect: "mysql",
+  HOST: config.host,
+  USER: config.user,
+  PASSWORD: config.dbPassword,
+  DB: config.db,
+  dialect: config.dialect,
   pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
+    max: config.poolMax,
+    min: config.poolMin,
+    acquire: config.poolAcquire,
+    idle: config.poolIdle,
   },
 };
 
@@ -37,11 +41,17 @@ const db = {
   sequelize,
   restaurant: RestaurantModel(sequelize),
   menuItems: MenuItemModel(sequelize),
+  ratings: RatingsModel(sequelize),
 };
 
 // Defined associations here
 db.restaurant.hasMany(db.menuItems, {
   as: "menuitems",
+  foreignKey: "restaurant_id",
+});
+
+db.restaurant.hasMany(db.ratings, {
+  as: "ratings",
   foreignKey: "restaurant_id",
 });
 
