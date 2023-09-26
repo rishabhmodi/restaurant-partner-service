@@ -10,7 +10,7 @@ class RestaurantController {
     res.send(data);
   }
 
-  static async _getRestaurant(req, res) {
+  static async _getRestaurants(req, res) {
     const data = await RestaurantService._getRestaurants();
     res.send(data);
   }

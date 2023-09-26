@@ -1,5 +1,6 @@
 import { Dialect, Sequelize } from "sequelize";
 import RestaurantModel from "../apis/restaurant/RestaurantModel";
+import MenuItemModel from "../apis/menu-items/MenuItemModel";
 
 const dbConnection = {
   HOST: "localhost",
@@ -34,7 +35,14 @@ const sequelize = new Sequelize(
 const db = {
   Sequelize,
   sequelize,
-  restaurant: RestaurantModel(sequelize, Sequelize),
+  restaurant: RestaurantModel(sequelize),
+  menuItems: MenuItemModel(sequelize),
 };
+
+// Defined associations here
+db.restaurant.hasMany(db.menuItems, {
+  as: "menuitems",
+  foreignKey: "restaurant_id",
+});
 
 export default db;

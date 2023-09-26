@@ -4,7 +4,7 @@ import RestaurantDAL from "./RestaurantDAL";
 class RestaurantService {
   static async _createRestaurant(payload) {
     try {
-      Object.assign(payload, { restaurant_id: CoreUtil._generateUUID() });
+      Object.assign(payload, { id: CoreUtil._generateUUID() });
       return await RestaurantDAL._createRestaurant(payload);
     } catch (error) {
       console.log(error);

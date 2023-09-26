@@ -1,32 +1,33 @@
-const RestaurantModel = (seqelize, Seqelize) => {
-  const Restaurant = seqelize.define(
+import { DataTypes } from "sequelize";
+
+const RestaurantModel = (sequelize) => {
+  const Restaurant = sequelize.define(
     "restaurant",
     {
-      restaurant_id: {
-        type: Seqelize.STRING,
+      id: {
+        type: DataTypes.STRING,
         primaryKey: true,
       },
       name: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
       cuisine: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
       location: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
       latitude: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
       longitude: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
       city: {
-        type: Seqelize.STRING,
+        type: DataTypes.STRING,
       },
     },
     {
-      underscored: true,
       timestamps: true,
     }
   );
