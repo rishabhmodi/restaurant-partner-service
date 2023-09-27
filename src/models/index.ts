@@ -1,8 +1,8 @@
 import { Dialect, Sequelize } from "sequelize";
 import RestaurantModel from "../apis/restaurant/RestaurantModel";
 import MenuItemModel from "../apis/menu-items/MenuItemModel";
-import RatingsModel from "../apis/ratings/RatingsModel";
 import Locals from "../providers/Locals";
+import OrderModel from "../apis/orders/OrderModel";
 
 const config = Locals.config();
 
@@ -41,17 +41,17 @@ const db = {
   sequelize,
   restaurant: RestaurantModel(sequelize),
   menuItems: MenuItemModel(sequelize),
-  ratings: RatingsModel(sequelize),
+  orders: OrderModel(sequelize),
 };
 
 // Defined associations here
 db.restaurant.hasMany(db.menuItems, {
-  as: "menuitems",
+  as: "menuItems",
   foreignKey: "restaurant_id",
 });
 
-db.restaurant.hasMany(db.ratings, {
-  as: "ratings",
+db.restaurant.hasMany(db.orders, {
+  as: "orders",
   foreignKey: "restaurant_id",
 });
 

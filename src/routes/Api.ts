@@ -1,7 +1,7 @@
 import { Router } from "express";
 import RestaurantController from "../apis/restaurant/RestaurantController";
 import MenuItemController from "../apis/menu-items/MenuItemController";
-import RatingsController from "../apis/ratings/RatingsController";
+import OrderController from "../apis/orders/OrderController";
 
 const router = Router();
 
@@ -13,8 +13,8 @@ router.get("/restaurant", RestaurantController._getRestaurants);
 router.post("/menu-item", MenuItemController._createMenuItem);
 router.get("/menu-items", MenuItemController._getMenuItems);
 
-// Ratings
-router.post("/rating", RatingsController._createRatings);
-router.get("/ratings", RatingsController._getRatings);
+// Orders
+router.post("/order", OrderController._createOrder);
+router.get("/orders", OrderController._getActiveOrders);
 
 export default router;

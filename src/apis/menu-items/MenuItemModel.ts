@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 const MenuItemModel = (sequelize) => {
   const MenuItems = sequelize.define(
-    "menuitems",
+    "menuItems",
     {
       id: {
         type: DataTypes.STRING,
@@ -24,6 +24,7 @@ const MenuItemModel = (sequelize) => {
       },
     },
     {
+      underscored: true,
       timestamps: true,
     }
   );
