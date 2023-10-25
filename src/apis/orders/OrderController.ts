@@ -3,11 +3,8 @@ import OrderService from "./OrderService";
 class OrderController {
   constructor() {}
 
-  static async _createOrder(req, res) {
-    const { body: payload } = req;
-
+  static async _createOrder(payload) {
     const data = await OrderService._createOrder(payload);
-    res.send(data);
   }
 
   static async _getActiveOrders(req, res) {

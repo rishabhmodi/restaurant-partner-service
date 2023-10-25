@@ -34,12 +34,13 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "kafka-node": "^5.0.0",
     "lusca": "^1.7.0",
-    "mongoose": "^7.4.1",
     "mysql2": "^3.6.1",
     "pg": "^8.11.3",
     "pug": "^3.0.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "xstate": "^4.38.3"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.38",

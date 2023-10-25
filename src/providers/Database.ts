@@ -3,7 +3,7 @@ import dbModels from "../models";
 export class Database {
   public static init(): any {
     dbModels.sequelize
-      .sync({ force: true })
+      .sync()
       .then(() => {
         console.log("Db Synced...");
       })

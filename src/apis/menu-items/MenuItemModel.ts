@@ -17,7 +17,7 @@ const MenuItemModel = (sequelize) => {
         type: DataTypes.STRING,
       },
       currency: {
-        type: DataTypes.ENUM("rupees", "dollar"),
+        type: DataTypes.ENUM("INR", "DOLLAR"),
       },
       price: {
         type: DataTypes.FLOAT,

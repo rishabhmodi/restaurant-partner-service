@@ -3,6 +3,8 @@ import * as path from "path";
 
 import Express from "./Express";
 import { Database } from "./Database";
+import KafkaProducer from "./KafkaProducer";
+import KafkaConsumer from "./KafkaConsumer";
 
 class App {
   public loadConfiguration(): void {
@@ -15,6 +17,11 @@ class App {
 
   public loadDatabase(): void {
     Database.init();
+  }
+
+  public loadKafka(): void {
+    new KafkaProducer();
+    new KafkaConsumer("order-stream");
   }
 }
 

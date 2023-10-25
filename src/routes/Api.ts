@@ -14,7 +14,7 @@ router.post("/menu-item", MenuItemController._createMenuItem);
 router.get("/menu-items", MenuItemController._getMenuItems);
 
 // Orders
-router.post("/order", OrderController._createOrder);
+// router.post("/order", OrderController._createOrder);
 router.get("/orders", OrderController._getActiveOrders);
 
 export default router;

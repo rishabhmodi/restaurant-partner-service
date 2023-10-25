@@ -11,6 +11,14 @@ class MenuItemService {
     }
   }
 
+  static async _getMenuItemById(id) {
+    try {
+      return await MenuItemDAL._getMenuItemById(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async _getMenuItems() {
     try {
       return await MenuItemDAL._getRestaurants();

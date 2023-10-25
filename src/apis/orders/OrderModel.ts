@@ -19,20 +19,21 @@ const OrderModel = (sequelize) => {
       },
       delivery_partner_id: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       status: {
         type: DataTypes.ENUM(
           "created",
-          "restaurant_acceppted",
+          "restaurant_accepted",
+          "restaurant_rejected",
           "delivery_partner_assigned",
           "order_picked_up",
-          "delivered"
+          "delivered",
+          "undelivered"
         ),
         defaultValue: "created",
       },
       currency: {
-        type: DataTypes.ENUM("rupees", "dollar"),
+        type: DataTypes.ENUM("INR", "DOLLAR"),
       },
       total_amount: {
         type: DataTypes.FLOAT,

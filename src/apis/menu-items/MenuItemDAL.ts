@@ -10,6 +10,10 @@ class MenuItemDAL {
   static async _getRestaurants() {
     return await this.menuItemModel.findAll();
   }
+
+  static async _getMenuItemById(id) {
+    return await this.menuItemModel.findOne({ where: { id } });
+  }
 }
 
 export default MenuItemDAL;
