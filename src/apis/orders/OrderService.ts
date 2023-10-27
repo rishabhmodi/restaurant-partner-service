@@ -1,5 +1,4 @@
 import CoreUtil from "../../providers/CoreUtil";
-import KafkaProducer from "../../providers/KafkaProducer";
 import MenuItemService from "../menu-items/MenuItemService";
 import OrderDAL from "./OrderDAL";
 import { OrderMachineService } from "./OrderMachine";
@@ -22,9 +21,8 @@ class OrderService {
         delete payload.status;
         const orderCreated = await OrderDAL._createOrder(payload);
         const kafkaPayload = {
-          orderId: orderCreated.id,
-          restaurant_id: orderCreated.restaurant_id,
-          userId: orderCreated.user_id,
+          ...orderCreated,
+          orderStatus: "AWAITING_RESTAURANT",
         };
         OrderMachineService.send("created", kafkaPayload);
         return orderCreated;
@@ -37,6 +35,41 @@ class OrderService {
   static async _getActiveOrders() {
     try {
       return await OrderDAL._getActiveOrders();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async _getActiveOrderById(orderId) {
+    try {
+      return await OrderDAL._getActiveOrderById(orderId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async _updateDeliveryPartnerInActiveOrder(orderId, deliveryPartnerId) {
+    try {
+      return await OrderDAL._updateDeliveryPartnerInActiveOrder(
+        orderId,
+        deliveryPartnerId
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async _updateOrderStatus(orderId, status) {
+    try {
+      return await OrderDAL._updateOrderStatus(orderId, status);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async _markOrderAsDelivered(orderId) {
+    try {
+      return await OrderDAL._markOrderAsDelivered(orderId);
     } catch (error) {
       console.log(error);
     }
